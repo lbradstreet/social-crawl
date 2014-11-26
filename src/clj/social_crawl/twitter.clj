@@ -27,7 +27,7 @@
                   java.util.zip.GZIPOutputStream.
                   clojure.java.io/writer)]
   (binding  [*out* w]
-    (println data))))
+    (println (pr-str data)))))
 
 (defn read-compressed [filename]
   (with-open [in (java.util.zip.GZIPInputStream.
@@ -72,7 +72,7 @@
 ; (def fol-stcom
 ;   (read-followers "followers_stcom_3468_1458114181416264589.txt"))
 
-(def us (future (user->followers "WTFSG" [] nil 1000)))
+;(def us (future (user->followers "WTFSG" [] nil 1000)))
 
 ;(deref us)
 
