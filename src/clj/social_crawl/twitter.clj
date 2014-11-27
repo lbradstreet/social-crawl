@@ -47,7 +47,7 @@
            n page-count]
     (let [next-cursor (:next_cursor (:body current-page))] 
       (if (or (zero? n) 
-              (not next-cursor))
+              (zero? next-cursor))
         followers 
         (let [updated-followers (into followers (:users (:body current-page)))
               next-page (fetch-followers screen-name next-cursor 60000)]
