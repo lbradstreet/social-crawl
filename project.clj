@@ -4,7 +4,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :jvm-opts ["-Xmx4g" "-server"] 
+  :jvm-opts ["-Xmx32g" "-server"] 
 
   :source-paths ["src/clj"]
   :test-paths ["test/clj"]

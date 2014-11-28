@@ -52,7 +52,7 @@
         (let [updated-followers (into followers (:users (:body current-page)))
               next-page (fetch-followers screen-name next-cursor 60000)]
           (write-compressed (str "followers_" screen-name "_" n "_" next-cursor ".txt.gz") 
-                            updated-followers)
+                            (vector screen-name updated-followers n next-cursor))
           (recur updated-followers next-page (dec n)))))))) 
 
 ;(deref us)
@@ -69,10 +69,11 @@
 ; (def fol 
 ;   (read-followers "mrbrown.txt"))
 
-; (def fol-stcom
-;   (read-followers "followers_stcom_3468_1458114181416264589.txt"))
+(def fol-stcom
+  (read-followers "followers_stcom_3011_1425412472691842337.txt.gz"))
 
-;(def us (future (user->followers "WTFSG" [] nil 1000)))
+(def us (future (apply user->followers fol-stcom)))
+;(future-cancel us)
 
 ;(deref us)
 
